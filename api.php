@@ -32,9 +32,11 @@ function handleGet($pdo) {
 }
 
 function handlePost($pdo, $input) {
-    $sql = "INSERT INTO user (name, email) VALUES (:name, :email)";
+    $sql = "INSERT INTO user (id, name, email) VALUES (:id, :name, :email)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['name' => $input['name'], 'email' => $input['email']]);
+    $stmt->execute(['name' => $input['name'], 
+                    'email' => $input['email'],
+                    'id' => $input['id']]);
     echo json_encode(['message' => 'User created successfully']);
 }
 
