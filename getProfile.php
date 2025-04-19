@@ -6,7 +6,8 @@ $db = new DataBase();
 if (isset($_POST['username'])) {
     if ($db->dbConnect()) {
         $profile = $db->getProfile("users", $_POST['username']);
-        echo json_encode($profile);
+        $obj_profile = json_decode (json_encode ($profile), FALSE);
+        echo json_encode($obj_profile);
     } else echo "Error: Database connection";
 } else echo "username fields are required";
 ?>
