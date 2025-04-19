@@ -76,7 +76,7 @@ class DataBase
             $profile = $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        return $result;
+        return $profile;
         
     }
 
