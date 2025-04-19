@@ -66,6 +66,19 @@ class DataBase
         } else return false;
     }
 
+    function getProfile($table, $username)
+    {
+        $username = $this->prepareData($username);
+        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
+        $result = mysqli_query($this->connect, $this->sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) != 0) {
+            $profile = $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        return $profile;
+    }
+
 }
 
 ?>
