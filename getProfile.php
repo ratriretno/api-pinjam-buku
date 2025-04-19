@@ -7,7 +7,7 @@ if (isset($_POST['username'])) {
     if ($db->dbConnect()) {
         $profile = $db->getProfile("users", $_POST['username']);
         // echo json_encode($profile);
-        echo json_encode($profile);
+        echo $profile;
     } else echo "Error: Database connection";
 } else echo "username fields are required";
 ?>
