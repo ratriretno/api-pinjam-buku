@@ -69,7 +69,7 @@ class DataBase
     function getProfile($table, $username)
     {
         $username = $this->prepareData($username);
-        $this->sql = "select * from " . $table . " where username = '" . $username . "' LIMIT 1";
+        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) != 0) {
