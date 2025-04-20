@@ -78,7 +78,8 @@ class DataBase
             $profile = "{empty}";
         }
 
-        return $row;
+        // return $row;
+        return $result;
     }
 
 }
