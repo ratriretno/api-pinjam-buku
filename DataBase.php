@@ -72,9 +72,11 @@ class DataBase
         $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
-        // if (mysqli_num_rows($result) != 0) {
-        //     $result = $result->fetch_all(MYSQLI_ASSOC);
-        // }
+        if (mysqli_num_rows($result) != 0) {
+            $result = $result->fetch_all(MYSQLI_ASSOC);
+        } else if (mysqli_num_rows($result) == 0) {
+            $result = "{empty}";
+        }
 
         return $result;
         
