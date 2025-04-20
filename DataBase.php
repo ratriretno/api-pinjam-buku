@@ -76,14 +76,7 @@ class DataBase
         return $row;
     }
 
-    function getBooks ($table)
-    {
-        $this->sql = "select * from " . $table .;
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-    
-        return $row;
-    }
+   
 
 }
 
