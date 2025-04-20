@@ -71,7 +71,7 @@ class DataBase
         $username = $this->prepareData($username);
         $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
-        $profile = $result->fetchAll()
+        $profile = $result->fetchAll();
 
         return $profile;
     }
