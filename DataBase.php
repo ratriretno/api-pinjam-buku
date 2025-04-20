@@ -72,20 +72,16 @@ class DataBase
         $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) != 0) {
-            $profile = $result->fetch_all(MYSQLI_ASSOC);
-        } else{
-            $profile = "{empty}";
-        }
-
+    
         return $row;
     }
 
-    function getBooks($table)
+    function getBooks ($table)
     {
-        $this->sql = "select * from " . $table . ";
+        $this->sql = "select * from " . $table .;
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
+    
         return $row;
     }
 
