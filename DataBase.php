@@ -80,11 +80,11 @@ class DataBase
     {
         $this->sql = "select * from " . $table;
         $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
+        // $row = mysqli_fetch_assoc($result);
 
         $books = array();
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-        	$myArray[] = $row;
+        	$books[] = $row;
     	}
 
         return $books;
