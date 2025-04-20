@@ -75,7 +75,7 @@ class DataBase
         if (mysqli_num_rows($result) != 0) {
             $profile = $result->fetch_all(MYSQLI_ASSOC);
         } else{
-            $profile = "{empty}"
+            $profile = "{empty}";
         }
 
         return $profile;
