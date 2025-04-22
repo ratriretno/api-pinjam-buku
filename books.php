@@ -8,7 +8,7 @@ $db = new DataBase();
         $booksArray= "{
             "error": false,
             "message": "Events fetched successfully",
-            "listEvents": [".json_encode($books)"]}"
+            "listEvents": [".json_encode($books)"]}";
         echo $booksArray;
     } else echo "Error: Database connection";
 
