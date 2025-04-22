@@ -7,7 +7,7 @@ $db = new DataBase();
         $books = $db->getBooks("books");
         $booksArray= "{
             \"error\": false,
-            \"message\": \"Events fetched successfully\",
+            \"message\": \"Books fetched successfully\",
             \"listBooks\": [".json_encode($books)."]}";
         echo $booksArray;
     } else echo "Error: Database connection";
