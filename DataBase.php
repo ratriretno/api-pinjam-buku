@@ -38,13 +38,13 @@ class DataBase
     {
         $email = $this->prepareData($email);
         $password = $this->prepareData($password);
-        $this->sql = "select * from " . $table . " where username = '" . $email . "'";
+        $this->sql = "select * from " . $table . " where email = '" . $email . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) != 0) {
-            $dbusername = $row['username'];
+            $dbemail = $row['email'];
             $dbpassword = $row['password'];
-            if ($dbusername == $username && password_verify($password, $dbpassword)) {
+            if ($dbemail == $email && password_verify($password, $dbpassword)) {
                 $login = true;
             } else $login = false;
         } else $login = false;
