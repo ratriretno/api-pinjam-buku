@@ -78,7 +78,7 @@ class DataBase
 
     function getBooks ($table)
     {
-        $this->sql = "select * from " . $table;
+        $this->sql = "select * from " . $table .", users WHERE ". $table .".id_owner=users.id";
         $result = mysqli_query($this->connect, $this->sql);
         // $row = mysqli_fetch_assoc($result);
 
