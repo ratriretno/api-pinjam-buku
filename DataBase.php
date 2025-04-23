@@ -44,12 +44,19 @@ class DataBase
         if (mysqli_num_rows($result) != 0) {
             $dbemail = $row['email'];
             $dbpassword = $row['password'];
+            $dbId = $row['id'];
             if ($dbemail == $email && password_verify($password, $dbpassword)) {
                 $login = true;
             } else $login = false;
         } else $login = false;
 
-        return $login;
+        $result = "{
+            \"error\": false,
+            \"login\":".$login.",
+            \"message\": \"Books fetched successfully\",
+            \"id\":\"".$dbId."\"}";
+
+        return $result;
     }
 
 
