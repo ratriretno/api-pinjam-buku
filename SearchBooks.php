@@ -4,7 +4,7 @@ $obj = json_decode($_GET["x"], false);
 require "DataBase.php";
 $db = new DataBase();
     if ($db->dbConnect()) {
-        $books = $db->searchBooks();
+        $books = $db->searchBooks($_GET['keyword']);
         $booksArray= "{
             \"error\": false,
             \"message\": \"Books fetched successfully\",
