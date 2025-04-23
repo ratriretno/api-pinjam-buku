@@ -90,6 +90,21 @@ class DataBase
         return $books;
     }
 
+    function searchBooks ($keyword)
+    {
+       $sql="SELECT * FROM books WHERE name like '%".$keyword."%' OR writer LIKE '%".$keyword."%',  users WHERE books.id_owner=users.id";
+        $this->sql = $sql;
+        $result = mysqli_query($this->connect, $this->sql);
+        // $row = mysqli_fetch_assoc($result);
+
+        $books = array();
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        	$books[] = $row;
+    	}
+
+        return $books;
+    }
+
 }
 
 ?>
