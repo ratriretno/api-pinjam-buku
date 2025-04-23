@@ -41,31 +41,31 @@ class DataBase
         $this->sql = "select * from " . $table . " where email = '" . $email . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
+        $errorResponse= "{
+            \"error\": false,
+            \"login\": false,
+            \"message\": \"Password atau Email Salah\",
+            \"profile\": ""}";
+        
+            $loginData =""
+
         if (mysqli_num_rows($result) != 0) {
             $dbemail = $row['email'];
             $dbpassword = $row['password'];
             if ($dbemail == $email && password_verify($password, $dbpassword)) {
                 $login = true;
-                $booksArray= "{
+                $loginData= "{
                     \"error\": false,
                     \"message\": \"Login Success\",
                     \"login\": true,
                     \"profile\": ".json_encode($row)."}";
             } else {
-                $booksArray= "{
-                    \"error\": false,
-                    \"login\": false,
-                    \"message\": \"Password atau Email Salah\",
-                    \"profile\": "[]"}";
+                $loginData = $errorResponse;
             }
-        } else  $booksArray= "{
-            \"error\": false,
-            \"login\": false,
-            \"message\": \"Password atau Email Salah\",
-            \"profile\": "[]"}";
-
-
-        return $booksArray;
+        } else  {
+            $loginData = $errorResponse;
+        }
+        return $loginData;
     }
 
     function signUp($table, $fullname, $email, $username, $password)
