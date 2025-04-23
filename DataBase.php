@@ -51,11 +51,11 @@ class DataBase
         } else $login = false;
 
         if($login){
-            $message = "Sukses Login"
-            $loginStatus = "true"
+            $message = "Sukses Login";
+            $loginStatus = "true";
         } else {
-            $message = "Email atau Password Salah"
-            $loginStatus = "false"
+            $message = "Email atau Password Salah";
+            $loginStatus = "false";
         }
 
         $result = "{
