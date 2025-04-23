@@ -50,6 +50,8 @@ class DataBase
         } else $login = false;
 
         return $login;
+    }
+
 
     function getProfile($table, $username)
     {
