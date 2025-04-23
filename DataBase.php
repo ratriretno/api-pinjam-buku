@@ -50,10 +50,18 @@ class DataBase
             } else $login = false;
         } else $login = false;
 
+        if($login){
+            $message = "Sukses Login"
+            $loginStatus = "true"
+        } else {
+            $message = "Email atau Password Salah"
+            $loginStatus = "false"
+        }
+
         $result = "{
             \"error\": false,
-            \"login\":".$login.",
-            \"message\": \"Books fetched successfully\",
+            \"login\":".$loginStatus.",
+            \"message\": \"".$message."\"",
             \"id\":\"".$dbId."\"}";
 
         return $result;
