@@ -34,55 +34,22 @@ class DataBase
         return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
     }
 
-    function logIn($table, $email, $password)
+    function logIn($table, $username, $password)
     {
-        // $username = $this->prepareData($username);
-        // $password = $this->prepareData($password);
-        $this->sql = "select * from " . $table . " where email = '" . $email . "'";
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-        $errorResponse= "{
-            \"error\": false,
-            \"login\": false,
-            \"message\": \"Password atau Email Salah\",
-            \"profile\": ""}";
-        
-            $loginData =""
-
-        if (mysqli_num_rows($result) != 0) {
-            $dbemail = $row['email'];
-            $dbpassword = $row['password'];
-            if ($dbemail == $email && password_verify($password, $dbpassword)) {
-                $login = true;
-                $loginData= "{
-                    \"error\": false,
-                    \"message\": \"Login Success\",
-                    \"login\": true,
-                    \"profile\": ".json_encode($row)."}";
-            } else {
-                $login=false;
-                $loginData = $errorResponse;
-            }
-        } else  {
-            $login=false;
-            $loginData = $errorResponse;
-        }
-        return $login;
-    }
-
-    function signUp($table, $fullname, $email, $username, $password)
-    {
-        $fullname = $this->prepareData($fullname);
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
-        $email = $this->prepareData($email);
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $this->sql =
-            "INSERT INTO " . $table . " (full_name, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
-        if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-        } else return false;
-    }
+        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
+        $result = mysqli_query($this->connect, $this->sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) != 0) {
+            $dbusername = $row['username'];
+            $dbpassword = $row['password'];
+            if ($dbusername == $username && password_verify($password, $dbpassword)) {
+                $login = true;
+            } else $login = false;
+        } else $login = false;
+
+        return $login;
 
     function getProfile($table, $username)
     {
