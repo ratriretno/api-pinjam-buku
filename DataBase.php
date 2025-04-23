@@ -92,8 +92,7 @@ class DataBase
 
     function searchBooks ($keyword)
     {
-       $sql="SELECT * FROM books WHERE name like '%".$keyword."%' OR writer LIKE '%".$keyword."%',  users WHERE books.id_owner=users.id";
-        $this->sql = $sql;
+        $this->sql = "SELECT * FROM books WHERE name like '%".$keyword."%' OR writer LIKE '%".$keyword."%',  users WHERE books.id_owner=users.id";
         $result = mysqli_query($this->connect, $this->sql);
         // $row = mysqli_fetch_assoc($result);
 
