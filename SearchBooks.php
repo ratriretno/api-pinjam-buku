@@ -3,13 +3,13 @@ header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_GET["x"], false);
 require "DataBase.php";
 $db = new DataBase();
-if ($db->dbConnect()) {
-    $books = $db->searchBooks($_GET['keyword']);
-    $booksArray= "{
-        \"error\": false,
-        \"message\": \"Books fetched successfully\",
-        \"listBooks\": ".json_encode($books)."}";
-    echo $booksArray;
-} else echo "Error: Database connection";   
+    if ($db->dbConnect()) {
+        $books = $db->searchBooks();
+        $booksArray= "{
+            \"error\": false,
+            \"message\": \"Books fetched successfully\",
+            \"listBooks\": ".json_encode($books)."}";
+        echo $booksArray;
+    } else echo "Error: Database connection";
 
 ?>
