@@ -60,12 +60,14 @@ class DataBase
                     \"login\": true,
                     \"profile\": ".json_encode($row)."}";
             } else {
+                $login=false;
                 $loginData = $errorResponse;
             }
         } else  {
+            $login=false;
             $loginData = $errorResponse;
         }
-        return $loginData;
+        return $login;
     }
 
     function signUp($table, $fullname, $email, $username, $password)
