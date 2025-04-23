@@ -50,7 +50,7 @@ class DataBase
             } else $login = false;
         } else $login = false;
 
-        if($login){
+        if($login==true){
             $message = "Sukses Login";
             $loginStatus = "true";
         } else {
@@ -61,7 +61,7 @@ class DataBase
         $result = "{
             \"error\": false,
             \"login\":".$loginStatus.",
-            \"message\": \"".$message."\"",
+            \"message\": \"".$message."\",
             \"id\":\"".$dbId."\"}";
 
         return $result;
