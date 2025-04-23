@@ -62,7 +62,7 @@ class DataBase
             \"error\": false,
             \"login\": false,
             \"message\": \"Password atau Email Salah\",
-            \"profile\": "[]"}";;
+            \"profile\": "[]"}";
 
 
         return $booksArray;
