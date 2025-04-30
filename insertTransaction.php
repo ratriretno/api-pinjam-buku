@@ -1,4 +1,3 @@
-insertTransaction.php
 <?php
 require "DataBase.php";
 $db = new DataBase();
