@@ -120,13 +120,12 @@ class DataBase
         return $books;
     }
 
-    function insertTransaction ($idUser, $idBuku)
+    function insertTransaction ($table, $idUser, $idBuku)
     {
         $idBuku = $this->prepareData($idBuku);
         $idUser = $this->prepareData($idUser);
 
-        $this->sql =
-            "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
+        $this->sql = "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
