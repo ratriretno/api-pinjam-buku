@@ -127,13 +127,13 @@ class DataBase
 
         $sqlInsert =  "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
 
-        $sqlUpdate =  "UPDATE books SET available = 'false' WHERE id='".$iBuku."'";
+        $sqlUpdate =  "UPDATE books SET available = 'false' WHERE id='".$idBuku."'";
 
     
         if (mysqli_query($this->connect, $sqlInsert)) {
-            $res = "Records buku".$iBuku." added successfully.";
+            $res = "Records buku".$idBuku." added successfully.";
             if (mysqli_query($this->connect, $sqlUpdate)) {
-                $res = "Records buku".$iBuku." update successfully.";
+                $res = "Records buku".$idBuku." update successfully.";
                 return $res;
             } else return $res;
         } else return false;
