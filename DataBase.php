@@ -122,17 +122,14 @@ class DataBase
 
     function insertTransaction ($idUser, $idBuku)
     {
-        $this->sql = "SELECT * FROM transaction, books WHERE books.id=transaction.id_book AND transaction.id_borrower='".$keyword."'";
-        $result = mysqli_query($this->connect, $this->sql);
-        // $row = mysqli_fetch_assoc($result);
+        $idBuku = $this->prepareData($idBuku);
+        $idUser = $this->prepareData($idUser);
 
-        if ($my_Insert_Statement->execute()) {
-            echo "New record created successfully";
-           } else {
-            echo "Unable to create record";
-           }
-
-        return $books;
+        $this->sql =
+            "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
     }
 
     function signUp($table, $fullname, $email, $username, $password)
