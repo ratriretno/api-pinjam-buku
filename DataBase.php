@@ -106,6 +106,20 @@ class DataBase
         return $books;
     }
 
+    function getTransaction ($keyword)
+    {
+        $this->sql = "SELECT * FROM transaction, books WHERE books.id=transaction.id_book AND transaction.id_borrower='".$keyword."'";
+        $result = mysqli_query($this->connect, $this->sql);
+        // $row = mysqli_fetch_assoc($result);
+
+        $books = array();
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        	$books[] = $row;
+    	}
+
+        return $books;
+    }
+
 }
 
 ?>
