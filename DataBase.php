@@ -157,10 +157,14 @@ class DataBase
     {
         $idBuku = $this->prepareData($idBuku);
         $idTransaksi = $this->prepareData($idTransaksi);
-  
-        $this->sql = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
-        if (mysqli_query($this->connect, $this->sql)) {
-            return true;
+
+        $sqlUpdateBooks =  "UPDATE books SET available = 'true' WHERE id='".$idBuku."'";
+        $sqlUpdateTransaction = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
+
+        if (mysqli_query($this->connect, $sqlUpdateTransaction)) {
+            if (mysqli_query($this->connect, $sqlUpdateBooks)) {
+                return true;
+            } else return false;
         } else return false;
     }
 
