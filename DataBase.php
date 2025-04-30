@@ -145,12 +145,12 @@ class DataBase
         } else return false;
     }
 
-    function returnBook ($table, $idPeminjaman, $idBuku)
+    function returnBook ($table, $idTransaksi, $idBuku)
     {
         $idBuku = $this->prepareData($idBuku);
-        $idPeminjaman = $this->prepareData($idPeminjaman);
+        $idTransaksi = $this->prepareData($idTransaksi);
   
-        $this->sql = "UPDATE " . $table ." SET end_date = NOW() WHERE id=".$idPeminjaman.;
+        $this->sql = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
