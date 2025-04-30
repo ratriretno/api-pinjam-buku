@@ -125,14 +125,12 @@ class DataBase
         $idBuku = $this->prepareData($idBuku);
         $idUser = $this->prepareData($idUser);
 
-        $this->sql = 
-                "START transaction;
-                INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "');
-                UPDATE books SET available = 'false' WHERE id='".$iBuku."';
-                COMMIT;";
+        $this->sql = "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
         if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-
+            $this->sql = "UPDATE books SET available = 'false' WHERE id='".$iBuku."'";
+            if (mysqli_query($this->connect, $this->sql)) {
+                return true;
+            } else return false;
         } else return false;
     }
 
@@ -157,10 +155,7 @@ class DataBase
   
         $this->sql = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
         if (mysqli_query($this->connect, $this->sql)) {
-                    $this->sql = "UPDATE books SET available = true WHERE id='".$iBuku."'";
-                    if (mysqli_query($this->connect, $this->sql)) {
-                        return true;
-                    } else return false;
+            return true;
         } else return false;
     }
 
