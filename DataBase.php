@@ -120,6 +120,36 @@ class DataBase
         return $books;
     }
 
+    function insertTransaction ($idUser, $idBuku)
+    {
+        $this->sql = "SELECT * FROM transaction, books WHERE books.id=transaction.id_book AND transaction.id_borrower='".$keyword."'";
+        $result = mysqli_query($this->connect, $this->sql);
+        // $row = mysqli_fetch_assoc($result);
+
+        if ($my_Insert_Statement->execute()) {
+            echo "New record created successfully";
+           } else {
+            echo "Unable to create record";
+           }
+
+        return $books;
+    }
+
+    function signUp($table, $fullname, $email, $username, $password)
+    {
+        $fullname = $this->prepareData($fullname);
+        $username = $this->prepareData($username);
+        $password = $this->prepareData($password);
+        $email = $this->prepareData($email);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $this->sql =
+            "INSERT INTO " . $table . " (full_name, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+
+
 }
 
 ?>
