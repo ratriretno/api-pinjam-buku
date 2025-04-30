@@ -125,10 +125,13 @@ class DataBase
         $idBuku = $this->prepareData($idBuku);
         $idUser = $this->prepareData($idUser);
 
-        $this->sql = "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
-        if (mysqli_query($this->connect, $this->sql)) {
-            $this->sql = "UPDATE books SET available = 'false' WHERE id='".$iBuku."'";
-            if (mysqli_query($this->connect, $this->sql)) {
+        $sqlInsert =  "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
+
+        $sqlUpdate =  "UPDATE books SET available = 'false' WHERE id='".$iBuku."'";
+
+    
+        if (mysqli_query($this->connect, $sqlInsert)) {
+            if (mysqli_query($this->connect, $sqlUpdate)) {
                 return true;
             } else return false;
         } else return false;
