@@ -3,7 +3,7 @@ require "DataBase.php";
 $db = new DataBase();
 if (isset($_POST['idTransaksi']) && isset($_POST['idBuku'])) {
     if ($db->dbConnect()) {
-        $res= $db->returnBook("transaction", $_POST['idTransaksi'], $_POST['idBuku'])) ;
+        $res= $db->returnBook("transaction", $_POST['idTransaksi'], $_POST['idBuku']) ;
         $result = "{
             \"error\": false,
             \"message\": \"".$res."\"}";
