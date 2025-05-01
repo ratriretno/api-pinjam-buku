@@ -181,7 +181,8 @@ class DataBase
 
         if (mysqli_query($this->connect, $sqlUpdateTransaction)) {
             if (mysqli_query($this->connect, $sqlUpdateBooks)) {
-                return true;
+                $res = "Buku berhasil dikembalikan";
+                return $res;
             } else return false;
         } else return false;
     }
