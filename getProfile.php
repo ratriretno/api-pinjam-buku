@@ -5,11 +5,12 @@ require "DataBase.php";
 $db = new DataBase();
 if (isset($_POST['idUser'])) {
     if ($db->dbConnect()) {
+        $message="sucess";
         $profile = $db->getProfile("users", $_POST['idUser']);
         $result = "{
             \"error\": false,
             \"login\": true,
-            \"message\": \"".$message."\",
+            \"message\": \"".$message."\"",
             \"profile\":".json_encode($profile)."}";
 
         echo $result;
