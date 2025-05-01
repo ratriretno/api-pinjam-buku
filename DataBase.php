@@ -131,7 +131,7 @@ class DataBase
 
         $sqlInsert =  "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
 
-        $sqlUpdate =  "UPDATE books SET available = 'false' WHERE id='".$idBuku."'";
+        $sqlUpdate =  "UPDATE books SET available = 'false', id_borrower='" . $idUser . "' WHERE id='".$idBuku."'";
 
     
         if (mysqli_query($this->connect, $sqlInsert)) {
@@ -176,7 +176,7 @@ class DataBase
         $idBuku = $this->prepareData($idBuku);
         $idTransaksi = $this->prepareData($idTransaksi);
 
-        $sqlUpdateBooks =  "UPDATE books SET available = 'true' WHERE id='".$idBuku."'";
+        $sqlUpdateBooks =  "UPDATE books SET available = 'true', id_borrower=' ' WHERE id='".$idBuku."'";
         $sqlUpdateTransaction = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
 
         if (mysqli_query($this->connect, $sqlUpdateTransaction)) {
