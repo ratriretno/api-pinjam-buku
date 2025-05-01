@@ -180,8 +180,8 @@ class DataBase
         $idBuku = $this->prepareData($idBuku);
         $idTransaksi = $this->prepareData($idTransaksi);
 
-        $sqlUpdateBooks =  "UPDATE books SET available = 'true', id_borrower=' ' WHERE id='".$idBuku."'";
-        $sqlUpdateTransaction = "UPDATE " . $table ." SET end_date = NOW() WHERE id='".$idTransaksi."'";
+        $sqlUpdateBooks =  "UPDATE books SET available = 'true', id_borrower=' ', id_transaction=' ' WHERE id='".$idBuku."'";
+        $sqlUpdateTransaction = "UPDATE 'transaction'  SET end_date = NOW() WHERE id='".$idTransaksi."'";
 
         if (mysqli_query($this->connect, $sqlUpdateTransaction)) {
             if (mysqli_query($this->connect, $sqlUpdateBooks)) {
