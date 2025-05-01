@@ -151,16 +151,13 @@ class DataBase
         if (mysqli_query($this->connect, $this->sql)) {
             $signup= true;
             $dbId=mysqli_insert_id($this->connect);
-        } else $status=false;
-
-        if($signup==true){
             $message = "Sucess Signup";
             $status = "true";
-
         } else {
             $message = "Failed Signup";
             $status = "false";
         }
+
 
         $result = "{
             \"error\": false,
