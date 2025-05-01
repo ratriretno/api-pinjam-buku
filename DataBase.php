@@ -120,7 +120,7 @@ class DataBase
         return $books;
     }
 
-    function insertTransaction ($table, $idUser, $idBuku)
+    function insertTransaction ($table, $idUser, $idBuku, $name)
     {
         $idBuku = $this->prepareData($idBuku);
         $idUser = $this->prepareData($idUser);
@@ -133,7 +133,7 @@ class DataBase
         if (mysqli_query($this->connect, $sqlInsert)) {
             $res = "Records buku".$idBuku." added successfully.";
             if (mysqli_query($this->connect, $sqlUpdate)) {
-                $res = "Records buku".$idBuku." update successfully.";
+                $res = "Buku berhasil ".$name." dipinjam.";
                 return $res;
             } else return $res;
         } else return false;
