@@ -10,7 +10,7 @@ if (isset($_POST['idUser'])) {
         $result = "{
             \"error\": false,
             \"login\": true,
-            \"message\": \"".$message."\"",
+            \"message\": \"".$message."\",
             \"profile\":".json_encode($profile)."}";
 
         echo $result;
