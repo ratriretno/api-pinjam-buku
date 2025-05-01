@@ -7,10 +7,12 @@ if (isset($_POST['idUser']) && isset($_POST['idBuku'])) {
         //     echo "insert transaction sucess";
         // } else echo "Failed";
         $res = $db->insertTransaction("transaction", $_POST['idUser'], $_POST['idBuku'], $_POST['name']);
-        echo $res;
+        
         $result = "{
             \"error\": false,
             \"message\": \"".$res."\"}";
+
+            echo $result;
 
     } else echo "Error: Database connection";
 } else if (isset($_POST['idUser']) && empty($_POST['idBuku']) ) {
