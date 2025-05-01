@@ -80,7 +80,7 @@ class DataBase
 
     function getBooks ($table)
     {
-        $sql = "SELECT books.id, books.id_transaksi, books.name, books.description, books.photo_url, books.year, books.writer, books.id_borrower, books.publisher, books.available, users.full_name, books.id_owner FROM `books`, users WHERE books.id_owner=users.id;";
+        $sql = "SELECT books.id, books.id_transaction, books.name, books.description, books.photo_url, books.year, books.writer, books.id_borrower, books.publisher, books.available, users.full_name, books.id_owner FROM `books`, users WHERE books.id_owner=users.id;";
         $this->sql = $sql;
         $result = mysqli_query($this->connect, $this->sql);
         // $row = mysqli_fetch_assoc($result);
@@ -138,7 +138,7 @@ class DataBase
             $res = "Records buku".$idBuku." added successfully.";
             $dbId=mysqli_insert_id($this->connect);
 
-            $sqlUpdate =  "UPDATE books SET available = 'false', id_transaksi='".$dbId."' id_borrower='" . $idUser . "' WHERE id='".$idBuku."'";
+            $sqlUpdate =  "UPDATE books SET available = 'false', id_transaction='".$dbId."', id_borrower='" . $idUser . "' WHERE id='".$idBuku."'";
 
             if (mysqli_query($this->connect, $sqlUpdate)) {
                 $res = $name." berhasil dipinjam.";
