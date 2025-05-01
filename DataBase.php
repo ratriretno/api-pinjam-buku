@@ -124,6 +124,8 @@ class DataBase
     {
         $idBuku = $this->prepareData($idBuku);
         $idUser = $this->prepareData($idUser);
+        $name = $this->prepareData($name);
+
 
         $sqlInsert =  "INSERT INTO " . $table . " (id_borrower, id_book) VALUES ('" . $idUser . "','" . $idBuku . "')";
 
