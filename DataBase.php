@@ -135,7 +135,7 @@ class DataBase
         if (mysqli_query($this->connect, $sqlInsert)) {
             $res = "Records buku".$idBuku." added successfully.";
             if (mysqli_query($this->connect, $sqlUpdate)) {
-                $res = "Buku berhasil ".$name." dipinjam.";
+                $res = $name." berhasil dipinjam.";
                 return $res;
             } else return $res;
         } else return false;
