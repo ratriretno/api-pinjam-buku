@@ -158,7 +158,6 @@ class DataBase
             $status = "false";
         }
 
-
         $result = "{
             \"error\": false,
             \"login\":".$status.",
