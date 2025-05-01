@@ -149,7 +149,7 @@ class DataBase
         $this->sql =
             "INSERT INTO " . $table . " (full_name, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
         if (mysqli_query($this->connect, $this->sql)) {
-            $status= true;
+            $signup= true;
             $dbId=mysqli_insert_id($this->connect);
         } else $status=false;
 
