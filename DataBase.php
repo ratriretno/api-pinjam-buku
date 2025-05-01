@@ -109,7 +109,7 @@ class DataBase
 
     function getTransaction ($keyword)
     {
-        $sql = "SELECT transaction.id, transaction.id_book, books.name, books.description, books.photo_url, books.year, books.writer, books.publisher, books.available, users.full_name, books.id_owner FROM transaction,`books`, users WHERE books.id_owner=users.id AND transaction.id_book=books.id AND transaction.id_borrower='".$keyword."'";
+        $sql = "SELECT transaction.id  AS 'id_transaksi', transaction.id_book AS 'id', books.name, books.description, books.photo_url, books.year, books.writer, books.publisher, books.available, users.full_name, books.id_owner FROM transaction,`books`, users WHERE books.id_owner=users.id AND transaction.id_book=books.id AND transaction.id_borrower='".$keyword."'";
         $this->sql = $sql;
         $result = mysqli_query($this->connect, $this->sql);
         // $row = mysqli_fetch_assoc($result);
