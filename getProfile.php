@@ -3,12 +3,12 @@ header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_GET["x"], false);
 require "DataBase.php";
 $db = new DataBase();
-if (isset($_POST['username'])) {
+if (isset($_POST['idUser'])) {
     if ($db->dbConnect()) {
-        $profile = $db->getProfile("users", $_POST['username']);
+        $profile = $db->getProfile("users", $_POST['idUser']);
         $result = "{
             \"error\": false,
-            \"login\":".$status.",
+            \"login\": true,
             \"message\": \"".$message."\",
             \"profile\":".json_encode($profile)."}";
 

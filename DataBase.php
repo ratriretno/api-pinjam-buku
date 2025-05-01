@@ -68,10 +68,10 @@ class DataBase
     }
 
 
-    function getProfile($table, $username)
+    function getProfile($table, $idUser)
     {
-        $username = $this->prepareData($username);
-        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
+        $idUser = $this->prepareData($idUser);
+        $this->sql = "select * from " . $table . " where id = '" . $idUser . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
     
