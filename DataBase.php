@@ -149,8 +149,26 @@ class DataBase
         $this->sql =
             "INSERT INTO " . $table . " (full_name, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
         if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-        } else return false;
+            $status= true;
+            $dbId=mysqli_insert_id($this->connect);
+        } else $status=false;
+
+        if($signup==true){
+            $message = "Sucess Signup";
+            $status = "true";
+
+        } else {
+            $message = "Failed Signup";
+            $status = "false";
+        }
+
+        $result = "{
+            \"error\": false,
+            \"login\":".$status.",
+            \"message\": \"".$message."\",
+            \"id\":\"".$dbId."\"}";
+
+        return $result;
     }
 
     function returnBook ($table, $idTransaksi, $idBuku)
