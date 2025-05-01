@@ -80,7 +80,8 @@ class DataBase
 
     function getBooks ($table)
     {
-        $this->sql = "select * from " . $table .", users WHERE ". $table .".id_owner=users.id";
+        $sql = "SELECT books.id, books.name, books.description, books.photo_url, books.year, books.writer, books.publisher, books.available, users.full_name, books.id_owner FROM `books`, users WHERE books.id_owner=users.id;";
+        $this->sql = $sql;
         $result = mysqli_query($this->connect, $this->sql);
         // $row = mysqli_fetch_assoc($result);
 
